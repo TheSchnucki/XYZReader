@@ -10,5 +10,8 @@
     <dimen name="fab_pressed_z_translation">12</dimen>
     <dimen name="app_bar_layout_height">300dp</dimen>
     <dimen name="action_bar_size">100</dimen>
+    <dimen name="app_bar_elevation">4dp</dimen>
+    <dimen name="toolbar_min_height">250dp</dimen>
+    <dimen name="title_padding_right">56dp</dimen>
 
 </resources>
