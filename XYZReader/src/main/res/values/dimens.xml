@@ -13,5 +13,6 @@
     <dimen name="app_bar_elevation">4dp</dimen>
     <dimen name="toolbar_min_height">250dp</dimen>
     <dimen name="title_padding_right">56dp</dimen>
+    <dimen name="app_bar_small_height">120</dimen>
 
 </resources>
