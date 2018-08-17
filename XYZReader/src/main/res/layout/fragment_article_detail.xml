@@ -37,6 +37,7 @@
                 style="?android:attr/textAppearanceSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
                 android:textColor="#8fff"
                 app:layout_collapseMode="parallax"/>
 
