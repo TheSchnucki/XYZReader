@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 
@@ -28,6 +26,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,6 +45,7 @@ public class ArticleDetailFragment extends Fragment implements
     private static final String TAG = "ArticleDetailFragment";
 
     public static final String ARG_ITEM_ID = "item_id";
+    private static final int TEXT_INCREMENT = 500;
 
     private Cursor mCursor;
     private long mItemId;
@@ -55,9 +55,14 @@ public class ArticleDetailFragment extends Fragment implements
     private Toolbar mToolbar;
     private ColorDrawable mStatusBarColorDrawable;
 
+    private Button readMoreButton;
     private ImageView mPhotoView;
     private boolean mIsCard = false;
     private int mStatusBarFullOpacityBottom;
+
+    private String bodyText;
+    private String bodyTextShort;
+    private int bodyTextShortLength = 0;
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss");
     // Use default locale format
@@ -145,7 +150,7 @@ public class ArticleDetailFragment extends Fragment implements
         mToolbar = (Toolbar) mRootView.findViewById(R.id.main_toolbar);
         TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
         bylineView.setMovementMethod(new LinkMovementMethod());
-        TextView bodyView = (TextView) mRootView.findViewById(R.id.article_body);
+        final TextView bodyView = (TextView) mRootView.findViewById(R.id.article_body);
 
         bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
 
@@ -178,10 +183,26 @@ public class ArticleDetailFragment extends Fragment implements
             /**
              * Set Text
              */
-//            bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY).replaceAll("(\r\n|\n)", "<br />")));
-            String bodyText = (mCursor.getString(ArticleLoader.Query.BODY).replaceAll("(\r\n|\n)", "<br />"));
-            String bodyTextShort = bodyText.substring(0,1000);
+            bodyText = (mCursor.getString(ArticleLoader.Query.BODY).replaceAll("(\r\n|\n)", "<br />"));
+            String bodyTextShort = bodyText.substring(0,TEXT_INCREMENT);
+            bodyTextShortLength = bodyTextShort.length();
             bodyView.setText(Html.fromHtml(bodyTextShort));
+
+            readMoreButton = (Button) mRootView.findViewById(R.id.read_more_button);
+            readMoreButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (bodyTextShortLength + TEXT_INCREMENT > bodyText.length()) {
+                        bodyTextShortLength = bodyText.length();
+                    } else {
+                        bodyTextShortLength += bodyTextShortLength + TEXT_INCREMENT;
+                    }
+
+                    String bodyTextLonger = bodyText.substring(0, bodyTextShortLength);
+                    bodyView.setText(Html.fromHtml(bodyTextLonger));
+                }
+            });
+
 
             ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
                     .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
