@@ -9,5 +9,6 @@
 
     <string name="up">Up</string>
     <string name="more_button_text">more</string>
+    <string name="transition_photo">PHOTO_TRANSITION</string>
 
 </resources>
