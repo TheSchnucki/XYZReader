@@ -138,14 +138,14 @@ public class ArticleListActivity extends AppCompatActivity implements
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = getLayoutInflater().inflate(R.layout.list_item_article, parent, false);
             final ViewHolder vh = new ViewHolder(view);
-//            DynamicHeightNetworkImageView thumbnailView;
-//            thumbnailView = (DynamicHeightNetworkImageView) view.findViewById(R.id.thumbnail);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+//                    DynamicHeightNetworkImageView thumbnailView;
+//                    thumbnailView = (View) view.findViewById(R.id.thumbnail);
 //                    Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(
-//                            this, sharedView, sharedView.getTransitionName())
-//                    )
+//                            this, thumbnailView, thumbnailView.getTransitionName()).toBundle();
+
                     startActivity(new Intent(Intent.ACTION_VIEW,
                             ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))));
                 }
