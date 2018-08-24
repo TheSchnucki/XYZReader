@@ -143,13 +143,14 @@ public class ArticleListActivity extends AppCompatActivity implements
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-//                    DynamicHeightNetworkImageView thumbnailView;
-//                    thumbnailView = (View) view.findViewById(R.id.thumbnail);
-//                    Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(
-//                            this, thumbnailView, thumbnailView.getTransitionName()).toBundle();
+                    ImageView thumbnailView;
+                    thumbnailView = (ImageView) view.findViewById(R.id.thumbnail);
+
+                    Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(
+                            ArticleListActivity.this, thumbnailView, getResources().getString(R.string.transition_photo)).toBundle();
 
                     startActivity(new Intent(Intent.ACTION_VIEW,
-                            ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))));
+                            ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))), bundle);
                 }
             });
             return vh;
