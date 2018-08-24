@@ -25,4 +25,11 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
+    <style name="Theme.Bacon.Text" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/theme_body_text</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
 </resources>

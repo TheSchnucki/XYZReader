@@ -15,5 +15,6 @@
     <dimen name="title_padding_right">56dp</dimen>
     <dimen name="app_bar_small_height">120</dimen>
     <dimen name="thumbnail_height">120dp</dimen>
+    <dimen name="more_button_padding">16dp</dimen>
 
 </resources>
