@@ -146,11 +146,11 @@ public class ArticleListActivity extends AppCompatActivity implements
                     ImageView thumbnailView;
                     thumbnailView = (ImageView) view.findViewById(R.id.thumbnail);
 
-                    Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(
-                            ArticleListActivity.this, thumbnailView, getResources().getString(R.string.transition_photo)).toBundle();
+//                    Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(
+//                            ArticleListActivity.this, thumbnailView, getResources().getString(R.string.transition_photo)).toBundle();
 
                     startActivity(new Intent(Intent.ACTION_VIEW,
-                            ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))), bundle);
+                            ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))));
                 }
             });
             return vh;
