@@ -188,9 +188,6 @@ public class ArticleListActivity extends AppCompatActivity implements
             }
 
             Picasso.get().load( mCursor.getString(ArticleLoader.Query.THUMB_URL)).into(holder.thumbnailView);
-//            holder.thumbnailView.setImageUrl(
-//                    mCursor.getString(ArticleLoader.Query.THUMB_URL),
-//                    ImageLoaderHelper.getInstance(ArticleListActivity.this).getImageLoader());
         }
 
         @Override
